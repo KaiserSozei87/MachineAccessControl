@@ -1,0 +1,172 @@
+﻿@model IEnumerable<MachineAccessControl.Model.Models.AccessControl>
+@using MachineAccessControl.Model.Common.Constants
+
+
+
+<script type="text/javascript">
+
+    function GetInactive(InactiveFlag) {
+        var link = '@Url.Action("AccessControlPartial", "AccessControls", new { GetInactive = -1})';
+        link = link.replace("-1", InactiveFlag);
+        $.ajax({
+            url: link,
+            type: 'POST',
+            success: function (data) {
+                if (data) {  // check if data is defined
+                    $("#AccessControlResults").html(data);
+                }
+            }
+        });
+    }
+
+    function GetTransactions(AccessControlID) {
+        var link = '@Url.Action("TransactionsPartial", "AccessControlTransactions", new { AccessControlID = -1 })';
+        link = link.replace("-1", AccessControlID);
+        $.ajax({
+            url: link,
+            type: 'POST',
+            success: function (data) {
+                if (data) {  // check if data is defined
+                    $("#AccessControlTransactions").html(data);
+                }
+            }
+        });
+    }
+
+    function WarningDialog(AccessControlID)
+    {
+        var link = '@Html.Raw(@Url.Action("Details", new { id = "param"  }))';
+        var link2 = link.replace("param", AccessControlID);
+        bootbox.dialog({
+            message: "Please remember that a password will only be shown for 3 minutes and all access is recorded with emails sent to departmental managers.", title: "Are you sure you wish to view this password?",
+            buttons: {
+                main: { label: "Cancel", className: "btn btn-danger", callback: function () { return true; } },
+                success: { label: "Continue", className: "btn btn-success", callback: function () { window.location.href = link2; } }
+            }
+        });
+    }
+
+    function HasBeenViewed(AccessControlID) {
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("HasBeenViewed", "AccessControls")', // calling json method
+            dataType: 'json',
+            data: { AccessControlID: AccessControlID }, //could perhaps serialize the model here instead of passing ID and doing a DB call.
+            success: function (data) {
+                $("#TableRow" + AccessControlID).removeClass();
+                $("#TableRow" + AccessControlID).addClass(data.Viewed);
+            },
+            error: function (ex) {
+                alert('Failed to retrieve formatting. Error: ' + ex);
+            }
+        });
+    }
+
+</script>
+
+
+
+    <div id="AccessControlResults">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Machine.MachineName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RecordCreated)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedBy)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastUpdated)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastUpdatedBy)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ViewedState)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+
+                <script type="text/javascript">
+                    HasBeenViewed(@(item.AccessControlID));
+                </script>
+
+                <tr id=@("TableRow" + item.AccessControlID)>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Machine.MachineName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RecordCreated)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedBy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastUpdated)
+                    </td>
+
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastUpdatedBy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ViewedState)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td>
+
+                        <a data-toggle="modal" id="@("btnTrans" + item.AccessControlID)" href="#myModal1" class="btn btn-primary btn-xs" onclick="@("GetTransactions(" + item.AccessControlID + ")")">Show Transactions</a> 
+                        @*<input type="submit" value="Show Transactions" data-toggle="modal"  class="btn btn-primary btn-xs" id="@("btnTrans" + item.AccessControlID)" onclick="@("GetTransactions(" + item.AccessControlID + ")") " />*@
+                        <input type="submit" value="Show Password" class="btn btn-primary btn-xs" id="@("btnDetail" + item.AccessControlID)" onclick="@("WarningDialog(" + item.AccessControlID + ")") " />
+                        <div class="btn-group">
+                            <a class="btn btn-primary btn-xs" href="#">More Options</a>
+                            <a class="btn btn-primary btn-xs dropdown-toggle" href="#" data-toggle="dropdown"><span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Edit", "Edit", new { id = item.AccessControlID })</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Delete", "Delete", new { id = item.AccessControlID })</li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+
+
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Transactions</h4>
+            </div>
+            <div class="modal-body">
+                <div id="loading-image">
+                    <img src="~/Content/ajax-loader.gif" id="loading-indicator" style="display:none" />
+                </div>
+                <div id="AccessControlTransactions">
+                    @Html.Action("TransactionsPartial", "AccessControlTransactions", new { AccessControlID = 0 })
+                </div>
+                @* Content loaded on a perclick basis for the modal dialog via an AJAX get request.  *@
+                @*@Html.Action("FifoException", "Dashboard", new { PicklistID = item.sapPicklist.PicklistID, SapShipNo = item.sapPicklist.ShipmentNo});*@
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

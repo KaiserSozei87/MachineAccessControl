@@ -1,0 +1,66 @@
+﻿@model MachineAccessControl.Model.Models.AccessControlTransaction
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AccessControlTransaction</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AccessControl.PasswordEntry)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccessControl.PasswordEntry)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TranType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TranType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MachineName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MachineName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PasswordEntry)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PasswordEntry)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RecordCreated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecordCreated)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TransactionID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

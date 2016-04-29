@@ -1,0 +1,90 @@
+﻿@model MachineAccessControl.Model.Models.AccessControl
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit @Model.Machine.MachineName</h2>
+
+
+
+<script type="text/javascript">
+    function GetPassword() {
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("ShowPassword", "AccessControls")', // calling json method
+            dataType: 'json',
+            data: { EncryptedPassword: '@Model.PasswordEntry' },
+
+            success: function (DecryptedPassword) {
+                bootbox.dialog({ message: "<strong>" + DecryptedPassword + "</strong>", title: "Password", buttons: { success: { label: "Continue", className: "btn btn-default" } } });
+            },
+            error: function (ex) {
+                alert('Failed to retrieve Password. Error: ' + ex);
+            }
+        });
+    }
+
+
+</script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    
+    
+    <div class="form-horizontal">
+        <h4>AccessControl</h4>
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.AccessControlID)
+        @Html.HiddenFor(model => model.LastUpdated)
+        @Html.HiddenFor(model => model.LastUpdatedBy)
+        @Html.HiddenFor(model => model.CreatedBy)
+        @Html.HiddenFor(model => model.RecordCreated)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MachineID, "MachineID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("MachineID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MachineID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PasswordEntry, htmlAttributes: new { @class = "control-label col-md-2" })
+            
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PasswordEntry, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PasswordEntry, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.IsActive)
+                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", new object { }, new  { @class="btn btn-success btn-xs"}) |
+    <input type="submit" value="Show Current Password" class="btn btn-success btn-xs" id="BtnGetPassword" onclick="GetPassword()" />
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

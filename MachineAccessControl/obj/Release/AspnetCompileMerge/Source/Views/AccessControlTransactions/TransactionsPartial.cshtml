@@ -1,0 +1,42 @@
+﻿@model List<MachineAccessControl.Model.Models.AccessControlTransaction>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().TranType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MachineName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().RecordCreated)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+
+    string RowClass = string.Empty;
+    if (item.TranType.Equals("Viewed")) { RowClass = "danger"; }
+    
+    <tr class=@(RowClass)>
+        <td>
+            @Html.DisplayFor(modelItem => item.TranType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MachineName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecordCreated)
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,15 @@
+C:\Users\mcnallyp\Documents\Visual Studio 2013\Projects\MachineAccessControl\MachineAccessControl.Model\bin\Debug\MachineAccessControl.Model.dll.config
+C:\Users\mcnallyp\Documents\Visual Studio 2013\Projects\MachineAccessControl\MachineAccessControl.Model\bin\Debug\MachineAccessControl.Model.dll
+C:\Users\mcnallyp\Documents\Visual Studio 2013\Projects\MachineAccessControl\MachineAccessControl.Model\bin\Debug\MachineAccessControl.Model.pdb
+C:\Users\mcnallyp\Documents\Visual Studio 2013\Projects\MachineAccessControl\MachineAccessControl.Model\bin\Debug\EntityFramework.dll
+C:\Users\mcnallyp\Documents\Visual Studio 2013\Projects\MachineAccessControl\MachineAccessControl.Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\mcnallyp\Documents\Visual Studio 2013\Projects\MachineAccessControl\MachineAccessControl.Model\bin\Debug\Glimpse.Ado.dll
+C:\Users\mcnallyp\Documents\Visual Studio 2013\Projects\MachineAccessControl\MachineAccessControl.Model\bin\Debug\Glimpse.AspNet.dll
+C:\Users\mcnallyp\Documents\Visual Studio 2013\Projects\MachineAccessControl\MachineAccessControl.Model\bin\Debug\Glimpse.Core.dll
+C:\Users\mcnallyp\Documents\Visual Studio 2013\Projects\MachineAccessControl\MachineAccessControl.Model\bin\Debug\Glimpse.EF6.dll
+C:\Users\mcnallyp\Documents\Visual Studio 2013\Projects\MachineAccessControl\MachineAccessControl.Model\bin\Debug\Glimpse.Mvc5.dll
+C:\Users\mcnallyp\Documents\Visual Studio 2013\Projects\MachineAccessControl\MachineAccessControl.Model\bin\Debug\EntityFramework.xml
+C:\Users\mcnallyp\Documents\Visual Studio 2013\Projects\MachineAccessControl\MachineAccessControl.Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\mcnallyp\Documents\Visual Studio 2013\Projects\MachineAccessControl\MachineAccessControl.Model\obj\Debug\MachineAccessControl.Model.csprojResolveAssemblyReference.cache
+C:\Users\mcnallyp\Documents\Visual Studio 2013\Projects\MachineAccessControl\MachineAccessControl.Model\obj\Debug\MachineAccessControl.Model.dll
+C:\Users\mcnallyp\Documents\Visual Studio 2013\Projects\MachineAccessControl\MachineAccessControl.Model\obj\Debug\MachineAccessControl.Model.pdb

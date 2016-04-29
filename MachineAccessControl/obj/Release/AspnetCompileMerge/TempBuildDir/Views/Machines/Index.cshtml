@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MachineAccessControl.Model.Models.Machine>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Machines</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MachineLocations.LocationName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MachineName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MachineLocations.LocationName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MachineName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MachineID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MachineID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MachineID })
+        </td>
+    </tr>
+}
+
+</table>

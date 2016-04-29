@@ -1,0 +1,63 @@
+﻿@model IEnumerable<MachineAccessControl.Model.Models.AccessControlTransaction>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AccessControl.PasswordEntry)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TranType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MachineName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PasswordEntry)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecordCreated)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccessControl.PasswordEntry)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TranType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MachineName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PasswordEntry)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecordCreated)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TransactionID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TransactionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TransactionID })
+        </td>
+    </tr>
+}
+
+</table>

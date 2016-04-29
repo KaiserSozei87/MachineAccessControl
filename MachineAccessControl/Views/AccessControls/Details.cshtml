@@ -1,0 +1,100 @@
+﻿@model MachineAccessControl.Model.Models.AccessControl
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Access Control For @Html.DisplayFor(model => model.Machine.MachineName)</h2>
+Page will expire in:
+<div class="progress progress-striped active">
+    <div class="loading-progress-1"></div>
+</div>
+    <script type="text/javascript">
+        var progress1 = $(".loading-progress-1").progressTimer({
+            baseStyle: 'progress progress-striped active',
+            warningStyle: 'progress-bar-danger',
+            showPercentage: true,
+            timeLimit: 10,
+            warningThreshold: 8,
+            onFinish: function () {
+                window.location = '@Url.Action("Index")';
+            }
+        });
+    </script>
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+
+            <dt>
+                <h3> @Html.DisplayNameFor(model => model.PasswordEntry)</h3>
+            </dt>
+
+            <dd>
+                <h3 class="text-danger">@Html.DisplayFor(model => model.PasswordEntry)</h3>
+            </dd>
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.RecordCreated)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RecordCreated)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CreatedBy)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LastUpdated)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LastUpdated)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LastUpdatedBy)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LastUpdatedBy)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ViewedState)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ViewedState)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IsActive)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        <a href="@Url.Action("Edit",new { id = Model.AccessControlID })" class="btn btn-primary btn-default btn-sm">
+            Edit
+            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+        </a>
+        <a href="@Url.Action("Delete", new { id = Model.AccessControlID })" class="btn btn-primary btn-default btn-sm">
+            Delete
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </a>
+        <a href="@Url.Action("Index")" class="btn btn-primary btn-default btn-sm">
+            Back To List
+            <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+        </a>
+    </p>

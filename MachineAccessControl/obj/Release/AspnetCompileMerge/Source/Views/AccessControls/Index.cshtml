@@ -1,0 +1,19 @@
+﻿@model IEnumerable<MachineAccessControl.Model.Models.AccessControl>
+
+@{
+    ViewBag.Title = "Password Control";
+}
+
+
+
+<h2>Machine Access Control</h2>
+
+<p class="form-horizontal">
+    @Html.ActionLink("Create New", "Create", new object { }, new { @class = "btn btn-success btn-xs" }) |
+    <input type="submit" value="Show Inactive" class="btn btn-success btn-xs" id="getInactive" onclick="@("GetInactive(true)")"/> |
+    <input type="submit" value="Show Active" class="btn btn-success btn-xs" id="getActive" onclick="@("GetInactive(false)")" />
+    
+
+</p>
+
+@Html.Action("AccessControlPartial", "AccessControls", new { GetInactive = ViewBag.GetInactive })

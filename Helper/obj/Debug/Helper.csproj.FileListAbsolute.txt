@@ -1,0 +1,10 @@
+C:\Users\mcnallyp\Documents\Visual Studio 2013\Projects\DueParts\Helper\bin\Debug\Helper.dll
+C:\Users\mcnallyp\Documents\Visual Studio 2013\Projects\DueParts\Helper\bin\Debug\Helper.pdb
+C:\Users\mcnallyp\Documents\Visual Studio 2013\Projects\DueParts\Helper\obj\Debug\Helper.dll
+C:\Users\mcnallyp\Documents\Visual Studio 2013\Projects\DueParts\Helper\obj\Debug\Helper.pdb
+C:\Users\mcnallyp\Documents\Visual Studio 2013\Projects\DueParts\Helper\obj\Debug\Helper.csprojResolveAssemblyReference.cache
+C:\Users\mcnallyp\Documents\Visual Studio 2013\Projects\Helper\bin\Debug\Helper.dll
+C:\Users\mcnallyp\Documents\Visual Studio 2013\Projects\Helper\bin\Debug\Helper.pdb
+C:\Users\mcnallyp\Documents\Visual Studio 2013\Projects\Helper\obj\Debug\Helper.csprojResolveAssemblyReference.cache
+C:\Users\mcnallyp\Documents\Visual Studio 2013\Projects\Helper\obj\Debug\Helper.dll
+C:\Users\mcnallyp\Documents\Visual Studio 2013\Projects\Helper\obj\Debug\Helper.pdb
