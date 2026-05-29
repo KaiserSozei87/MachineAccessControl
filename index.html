@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+        #timer {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #0070f3; /* Adjust to company branding colors */
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Oh dear! You've scanned a malicious QR Code, shame on you!!</h2>
+    <p>You will be automatically redirected to a free pot of money in:</p>
+    <div id="timer">5</div>
+</div>
+
+<script>
+    // 1. Set your destination URL here
+    const targetURL = "https://app.collectionpot.com/pot/3501562"; 
+    
+    // 2. Set countdown time in seconds
+    let timeLeft = 5; 
+
+    const timerElement = document.getElementById('timer');
+
+    const countdown = setInterval(() => {
+        timeLeft--;
+        timerElement.textContent = timeLeft;
+
+        if (timeLeft <= 0) {
+            clearInterval(countdown);
+            window.location.href = targetURL;
+        }
+    }, 1000);
+</script>
+
+</body>
+</html>
